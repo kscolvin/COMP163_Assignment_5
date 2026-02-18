@@ -1,0 +1,183 @@
+name: Autograding Tests
+'on':
+- push
+- repository_dispatch
+permissions:
+  checks: write
+  actions: read
+  contents: read
+jobs:
+  run-autograding-tests:
+    runs-on: ubuntu-latest
+    if: github.actor != 'github-classroom[bot]'
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+    - name: Collatz - Basic Sequence
+      id: collatz-basic-sequence
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Collatz - Basic Sequence
+        setup-command: pip install pytest
+        command: pytest test_assignment.py::test_01_collatz_basic -v
+        timeout: 5
+        max-score: 5
+    - name: Collatz - Complex Sequence
+      id: collatz-complex-sequence
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Collatz - Complex Sequence
+        setup-command: ''
+        command: pytest test_assignment.py::test_02_collatz_complex -v
+        timeout: 5
+        max-score: 5
+    - name: Collatz - Edge Case
+      id: collatz-edge-case
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Collatz - Edge Case
+        setup-command: ''
+        command: pytest test_assignment.py::test_03_collatz_single_step -v
+        timeout: 5
+        max-score: 5
+    - name: Prime - Small Prime
+      id: prime-small-prime
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Prime - Small Prime
+        setup-command: ''
+        command: pytest test_assignment.py::test_04_prime_is_prime_small -v
+        timeout: 5
+        max-score: 4
+    - name: Prime - Large Prime
+      id: prime-large-prime
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Prime - Large Prime
+        setup-command: ''
+        command: pytest test_assignment.py::test_05_prime_is_prime_large -v
+        timeout: 5
+        max-score: 4
+    - name: Prime - Composite Number
+      id: prime-composite-number
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Prime - Composite Number
+        setup-command: ''
+        command: pytest test_assignment.py::test_06_prime_not_prime -v
+        timeout: 5
+        max-score: 4
+    - name: Prime - Even Composite
+      id: prime-even-composite
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Prime - Even Composite
+        setup-command: ''
+        command: pytest test_assignment.py::test_07_prime_not_prime_even -v
+        timeout: 5
+        max-score: 3
+    - name: Multiplication - Structure
+      id: multiplication-structure
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Multiplication - Structure
+        setup-command: ''
+        command: pytest test_assignment.py::test_08_multiplication_table_structure
+          -v
+        timeout: 5
+        max-score: 5
+    - name: Multiplication - Calculations
+      id: multiplication-calculations
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Multiplication - Calculations
+        setup-command: ''
+        command: pytest test_assignment.py::test_09_multiplication_table_calculations
+          -v
+        timeout: 5
+        max-score: 5
+    - name: Multiplication - Formatting
+      id: multiplication-formatting
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Multiplication - Formatting
+        setup-command: ''
+        command: pytest test_assignment.py::test_10_multiplication_table_format -v
+        timeout: 5
+        max-score: 5
+    - name: Statistics - Data Collection
+      id: statistics-data-collection
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Statistics - Data Collection
+        setup-command: ''
+        command: pytest test_assignment.py::test_11_statistics_data_collection -v
+        timeout: 5
+        max-score: 3
+    - name: Statistics - Calculations
+      id: statistics-calculations
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Statistics - Calculations
+        setup-command: ''
+        command: pytest test_assignment.py::test_12_statistics_calculations -v
+        timeout: 5
+        max-score: 3
+    - name: Statistics - Min/Max
+      id: statistics-min-max
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Statistics - Min/Max
+        setup-command: ''
+        command: pytest test_assignment.py::test_13_statistics_min_max_values -v
+        timeout: 5
+        max-score: 3
+    - name: Statistics - Bar Chart
+      id: statistics-bar-chart
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Statistics - Bar Chart
+        setup-command: ''
+        command: pytest test_assignment.py::test_14_statistics_bar_chart -v
+        timeout: 5
+        max-score: 3
+    - name: Statistics - Loop Types
+      id: statistics-loop-types
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Statistics - Loop Types
+        setup-command: ''
+        command: pytest test_assignment.py::test_15_statistics_multiple_loop_types
+          -v
+        timeout: 5
+        max-score: 2
+    - name: Statistics - Integration
+      id: statistics-integration
+      uses: classroom-resources/autograding-command-grader@v1
+      with:
+        test-name: Statistics - Integration
+        setup-command: ''
+        command: pytest test_assignment.py::test_16_statistics_integration -v
+        timeout: 5
+        max-score: 1
+    - name: Autograding Reporter
+      uses: classroom-resources/autograding-grading-reporter@v1
+      env:
+        COLLATZ-BASIC-SEQUENCE_RESULTS: "${{steps.collatz-basic-sequence.outputs.result}}"
+        COLLATZ-COMPLEX-SEQUENCE_RESULTS: "${{steps.collatz-complex-sequence.outputs.result}}"
+        COLLATZ-EDGE-CASE_RESULTS: "${{steps.collatz-edge-case.outputs.result}}"
+        PRIME-SMALL-PRIME_RESULTS: "${{steps.prime-small-prime.outputs.result}}"
+        PRIME-LARGE-PRIME_RESULTS: "${{steps.prime-large-prime.outputs.result}}"
+        PRIME-COMPOSITE-NUMBER_RESULTS: "${{steps.prime-composite-number.outputs.result}}"
+        PRIME-EVEN-COMPOSITE_RESULTS: "${{steps.prime-even-composite.outputs.result}}"
+        MULTIPLICATION-STRUCTURE_RESULTS: "${{steps.multiplication-structure.outputs.result}}"
+        MULTIPLICATION-CALCULATIONS_RESULTS: "${{steps.multiplication-calculations.outputs.result}}"
+        MULTIPLICATION-FORMATTING_RESULTS: "${{steps.multiplication-formatting.outputs.result}}"
+        STATISTICS-DATA-COLLECTION_RESULTS: "${{steps.statistics-data-collection.outputs.result}}"
+        STATISTICS-CALCULATIONS_RESULTS: "${{steps.statistics-calculations.outputs.result}}"
+        STATISTICS-MIN-MAX_RESULTS: "${{steps.statistics-min-max.outputs.result}}"
+        STATISTICS-BAR-CHART_RESULTS: "${{steps.statistics-bar-chart.outputs.result}}"
+        STATISTICS-LOOP-TYPES_RESULTS: "${{steps.statistics-loop-types.outputs.result}}"
+        STATISTICS-INTEGRATION_RESULTS: "${{steps.statistics-integration.outputs.result}}"
+      with:
+        runners: collatz-basic-sequence,collatz-complex-sequence,collatz-edge-case,prime-small-prime,prime-large-prime,prime-composite-number,prime-even-composite,multiplication-structure,multiplication-calculations,multiplication-formatting,statistics-data-collection,statistics-calculations,statistics-min-max,statistics-bar-chart,statistics-loop-types,statistics-integration
