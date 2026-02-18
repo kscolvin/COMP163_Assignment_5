@@ -60,7 +60,7 @@ for divisor in range(2, n):                         # Loop through numbers from 
 if its_prime:
     print(f"{n} is prime!")                         # If the loop completes without finding a divisor, n is prime
 else:
-    print(f"{n} is not a prime number. It is divisible by {first_divisor}.")
+    print(f"{n} is not prime number. It is divisible by {first_divisor}.")
 
 # ========================================
 
