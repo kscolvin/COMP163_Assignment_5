@@ -21,17 +21,22 @@ if n <= 0:                                          # Check for valid input
 
 print(f"Sequence starting from {n}: ", end="") 
 
-while n != 1 and steps < max_steps:                                       # While loop because we don't know how many steps it will take to reach 1
+while n != 1:                                       # While loop because we don't know how many steps it will take to reach 1
     print(n, end=" ")
-    steps += 1
 
+    if steps >= max_steps:                          # Check if step limit is reached to prevent infinite loops
+        print("\nMaximum steps exceeded.")
+        break
+    
     if n % 2 == 0:                                  # If n is even, divide it by 2
         n = n // 2
     else:                                           # If n is odd, multiply it by 3 and add 1
         n = 3 * n + 1
-
-steps += 0                                          # Increment step count for each iteration
-print(f"Total steps taken: {steps}")                # Output the total number of steps taken to reach 1
+    
+    steps += 1                                      # Increment step count for each iteration
+if n == 1:
+    print(n)                                        # Print the final value of 1 if reached
+    print(f"Total steps taken: {steps}")            # Output the total number of steps taken to reach 1
 
 # ========================================
 
