@@ -12,6 +12,25 @@ AI Usage: AI will be used to explain loop concepts and provide code examples, bu
 # ========================================
 # Step 1: Collatz Sequence Generator
 
+n = int(input("Enter a number to begin with: "))    # User input for starting number
+steps = 0
+
+print(f"Sequence starting from {n}: ", end="") 
+
+while n != 1:                                       # While loop because we don't know how many steps it will take to reach 1
+
+    print(n, end=" ")
+
+    if n % 2 == 0:
+        n = n // 2
+    else:
+        n = 3 * n + 1
+
+    steps += 1                                      # Increment step count for each iteration
+
+print(n)
+steps += 1
+print(f"Total steps taken: {steps}")                # Output the total number of steps taken to reach 1
 
 # ========================================
 
