@@ -40,20 +40,41 @@ if n == 1:
 
 # ========================================
 
+
 # ========================================
 # Step 2: For Loop - Prime Number Checker
 
+n = int(input("Enter a number: "))
+
+its_prime = True
+first_divisor = 0
+
+print(f"Checking if {n} is a prime number...")
+
+for divisor in range(2, n):                         # Loop through numbers from 2 to n-1 to check for divisibility
+    if n % divisor == 0:                            # If n is divisible by any number in this range, it's not prime
+        its_prime = False                           # for loop is appropriate here because we know the number of iterations (n-2)
+        first_divisor = divisor
+        break
+
+if its_prime:
+    print(f"{n} is a prime number.")
+else:
+    print(f"{n} is not a prime number. It is divisible by {first_divisor}.")
 
 # ========================================
+
 
 # ========================================
 # Step 3: Nested Loops - Multiplication Table Grid
-
+                          
 
 # ========================================
+
 
 # ========================================
 # Step 4: Integration Challenge - Statistics Dashboard
 
 
 # ========================================
+
