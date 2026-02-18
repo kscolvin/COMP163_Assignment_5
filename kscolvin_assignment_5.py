@@ -46,21 +46,23 @@ if n == 1:
 
 n = int(input("Enter a number: "))
 
-its_prime = True
+is_prime = True
 first_divisor = 0
 
 print(f"Checking if {n} is a prime number...")
 
-for divisor in range(2, n):                         # Loop through numbers from 2 to n-1 to check for divisibility
-    if n % divisor == 0:                            # If n is divisible by any number in this range, it's not prime
-        its_prime = False                           # for loop is appropriate here because we know the number of iterations (n-2)
-        first_divisor = divisor
-        break
+def is_prime(n):                                    # Function to check if a number is prime
+    if n < 2:
+        return False
+    for i in range(2, n):                           # Loop through numbers from 2 to n-1 to check for divisibility
+        if n % i == 0:
+            return False
+    return True
 
-if its_prime:
-    print(f"{n} is a prime number.")
+if is_prime(n):
+    print(f"{n} is a prime number!")                # Output whether the number is prime or not
 else:
-    print(f"{n} is not a prime number. It is divisible by {first_divisor}.")
+    print(f"{n} is not a prime number.")            # Output whether the number is prime or not
 
 # ========================================
 
@@ -68,7 +70,7 @@ else:
 # ========================================
 # Step 3: Nested Loops - Multiplication Table Grid
 
-print("Multiplication Table (1 to 10):")
+print("Multiplication Table (1-10):")               # Print header for the multiplication table
 
 print("    ", end="")                               # Print initial spacing for the top row
 for col in range(1, 11):                            # Print the top row of numbers
@@ -82,7 +84,7 @@ for row in range(1, 11):                            # Loop through each row
         product = row * col
         print(f"{product:4}", end="")               # Print the product with spacing
     print()                             
-
+    
 # ========================================
 
 
