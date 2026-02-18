@@ -46,45 +46,38 @@ if n == 1:
 
 n = int(input("Enter a number: "))
 
-is_prime = True
+its_prime = True
 first_divisor = 0
 
 print(f"Checking if {n} is a prime number...")
 
-def is_prime(n):                                    # Function to check if a number is prime
-    if n < 2:
-        return False
-    for i in range(2, n):                           # Loop through numbers from 2 to n-1 to check for divisibility
-        if n % i == 0:
-            return False
-    return True
+for divisor in range(2, n):                         # Loop through numbers from 2 to n-1 to check for divisibility
+    if n % divisor == 0:                            # If n is divisible by any number in this range, it's not prime
+        its_prime = False                           # for loop is appropriate here because we know the number of iterations (n-2)
+        first_divisor = divisor
+        break
 
-if is_prime(n):
-    print(f"{n} is a prime number!")                # Output whether the number is prime or not
+if its_prime:
+    print(f"{n} is prime!")                         # If the loop completes without finding a divisor, n is prime
 else:
-    print(f"{n} is not a prime number.")            # Output whether the number is prime or not
+    print(f"{n} is not a prime number. It is divisible by {first_divisor}.")
 
 # ========================================
 
 
 # ========================================
-# Step 3: Nested Loops - Multiplication Table Grid
+# Step 3: Nested Loops - Multiplication Table
 
-print("Multiplication Table (1-10):")               # Print header for the multiplication table
+print("\nMultiplication Table (1-10):")             # Print a header for the multiplication table
 
-print("    ", end="")                               # Print initial spacing for the top row
-for col in range(1, 11):                            # Print the top row of numbers
-    print(f"{col:4}", end="")
-print()                                             # New line after the top row
-
-for row in range(1, 11):                            # Loop through each row
-    print(f"{row:4}", end="")                       # Print the row number at the beginning of each row
-    
-    for col in range(1, 11):                        # Loop through each column in the current row
+for row in range(1, 11):                            # Loop through numbers 1 to 10 for the rows of the multiplication table
+   
+    for col in range(1, 11):                        # Inner loop for columns (1-10) to calculate the product of row and column
         product = row * col
-        print(f"{product:4}", end="")               # Print the product with spacing
-    print()                             
-    
+        print(f"{product:4}", end="") 
+
+    print()  
+
 # ========================================
 
 
