@@ -27,7 +27,7 @@ while n != 1:                                       # While loop because we don'
     else:                                           # If n is odd, multiply it by 3 and add 1
         n = 3 * n + 1
 
-steps += 1                                          # Increment step count for each iteration
+steps += 0                                          # Increment step count for each iteration
 print(f"Total steps taken: {steps}")                # Output the total number of steps taken to reach 1
 
 # ========================================
