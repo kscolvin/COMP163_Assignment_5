@@ -67,7 +67,21 @@ else:
 
 # ========================================
 # Step 3: Nested Loops - Multiplication Table Grid
-                          
+
+print("Multiplication Table (1 to 10):")
+
+print("    ", end="")                               # Print initial spacing for the top row
+for col in range(1, 11):                            # Print the top row of numbers
+    print(f"{col:4}", end="")
+print()                                             # New line after the top row
+
+for row in range(1, 11):                            # Loop through each row
+    print(f"{row:4}", end="")                       # Print the row number at the beginning of each row
+    
+    for col in range(1, 11):                        # Loop through each column in the current row
+        product = row * col
+        print(f"{product:4}", end="")               # Print the product with spacing
+    print()                             
 
 # ========================================
 
