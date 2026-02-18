@@ -14,11 +14,14 @@ AI Usage: AI will be used to explain loop concepts and provide code examples, bu
 
 n = int(input("Enter a number to begin with: "))    # User input for starting number
 steps = 0
+max_steps = 1000                                    # Set a maximum step limit to prevent infinite loops
+if n <= 0:                                          # Check for valid input      
+    print("Please enter a positive integer.")
+    exit()
 
 print(f"Sequence starting from {n}: ", end="") 
 
-while n != 1:                                       # While loop because we don't know how many steps it will take to reach 1
-
+while n != 1 and steps < max_steps:                                       # While loop because we don't know how many steps it will take to reach 1
     print(n, end=" ")
     steps += 1
 
