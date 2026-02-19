@@ -86,9 +86,12 @@ for row in range(1, 11):                            # Loop through numbers 1 to 
 
 
 # Part A
-numbers = []                                        # Initialize an empty list to store user-entered numbers
-total_sum = 0
-count = 0
+
+numbers = []                                       # List to store user-entered numbers
+total_sum = 0                                      # Variable to keep track of the sum of numbers
+count = 0                                          # Variable to count how many numbers have been entered
+minimum = None                                     # Variable to track the minimum value entered
+maximum = None                                     # Variable to track the maximum value entered
 
 print("=== Statistics Dashboard ===")
 print("Enter number. Type '-1' to finish.")
@@ -121,21 +124,29 @@ if maximum is None or val > maximum:                # Update maximum if the curr
 # Part B
 print("\n=== Statistics ===")
 
-if count > 0:
-    average = total_sum / count
+if len(numbers) > 0:
+    count = len(numbers)
+    _sum = sum(numbers)
+    average = _sum / len(numbers) if len(numbers) > 0 else 0
+    _min = min(numbers)
+    _max = max(numbers)
 
-    stats = [f"Count: {count}", f"Sum: {total_sum}", f"Average: {average:.1f}", f"Minimum: {minimum}", f"Maximum: {maximum}"]
+    stats = [
+            f"Count: {count}", 
+            f"Sum: {total_sum}", 
+            f"Average: {average:.1f}", 
+            f"Minimum: {_min}", 
+            f"Maximum: {_max}"
+    ]
 
     for stat in stats:                              # Loop through the list of statistics and print each one
         print(stat)
 
 
 # Part C
-print("\n=== Bar Chart ===")
-
+print("=== Bar Chart ===")
 for num in numbers:
-    print(f"{num:2}: ", end="")
-
+    print(f"{num}: {'*' * num}")
     for _ in range(num):                            # Inner loop to print * corresponding to the value of num
         print("*", end="")
     print()                                      
