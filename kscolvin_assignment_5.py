@@ -84,6 +84,36 @@ for row in range(1, 11):                            # Loop through numbers 1 to 
 # ========================================
 # Step 4: Integration Challenge - Statistics Dashboard
 
+numbers = []                                        # Initialize an empty list to store user-entered numbers
+total_sum = 0
+count = 0
+
+print("=== Statistics Dashboard ===")
+print("Enter number. Type '-1' to finish.")
+
+while True:                                         # Loop to continuously accept user input until 'done' is entered
+    try:
+        val = int(input("Enter a number: "))
+    except ValueError:
+        print("Please enter a valid integer.")
+        continue
+
+    if val == -1:
+        break
+
+    if val < 0:
+        print("Please enter a non-negative integer.")
+        continue
+
+numbers.append(val)                                 # Add valid input to the list
+
+total_sum += val                                    # Update the total sum with the new value
+count += 1                                          # Increment the count of numbers entered
+
+if minimum is None or val < minimum:                    # Update minimum if the current value is smaller
+    minimum = val
+if maximum is None or val > maximum:                    # Update maximum if the current value is larger
+    maximum = val
 
 # ========================================
 
