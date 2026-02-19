@@ -112,10 +112,10 @@ average = total / count if count > 0 else 0
 # Part B
 print("\n=== Statistics ===")
 if count > 0:                                       # Check if any numbers were entered to avoid division by zero
-    average = total / count                     # Calculate the average
+    average = total / count                         # Calculate the average
     print(f"Count: {count}")
     print(f"Sum: {total}")
-    print(f"Average: {average:.1f}")                # Format average to one decimal place
+    print(f"Average: {average:.1f}")                
     print(f"Minimum: {min_val}")
     print(f"Maximum: {max_val}")
 else:
@@ -123,18 +123,13 @@ else:
 
 
 # Part C
-print("\n=== Bar Chart ===")
+print("=== Bar Chart ===")
 
-for num in numbers:
-    print(f"{num}: {'*' * num}")
-    
-    for _ in range(num):                            # Inner loop to print * corresponding to the value of num
-        print("*", end="")
-
-    print()      
+for num in numbers:                                # Loop through the list of numbers to print a bar chart
+    print(f"{num}: {'*' * num}")                   # Print the number followed by a bar of asterisks corresponding to its value
 
 else:
-    print("No numbers were entered.")
+    print("No data to display.")                    # If no numbers were entered, inform the user that there is no data to display
 
 # ========================================
 
