@@ -124,19 +124,30 @@ if maximum is None or val > maximum:                # Update maximum if the curr
 # Part B
 print("\n=== Statistics ===")
 
-if count > 0:
-    average = total_sum / count                       # Calculate the average using the total sum and count of numbers
+# --- Part B: Statistics Display (Using built-in functions) ---
+print("\n=== Statistics ===")
 
-    stats = [
-            f"Count: {count}", 
-            f"Sum: {total_sum}", 
-            f"Average: {average:.1f}", 
-            f"Minimum: {minimum}", 
-            f"Maximum: {maximum}"
+if len(numbers) > 0:
+    
+    count = len(numbers)
+    _sum = sum(numbers)
+    average = _sum / count if count > 0 else 0
+    _min = min(numbers)
+    _max = max(numbers)
+
+
+    stats_data = [
+        ("Count", count),
+        ("Sum", _sum),
+        ("Average", f"{average:.1f}"), 
+        ("Minimum", _min),
+        ("Maximum", _max)
     ]
 
-    for stat in stats:
-        print(stat)
+    for label, value in stats_data:
+        print(f"{label}: {value}")
+else:
+    print("No data was entered.")
 
 
 # Part C
@@ -149,7 +160,7 @@ for num in numbers:
         print("*", end="")
 
     print()      
-                                      
+
 else:
     print("No numbers were entered.")
 
