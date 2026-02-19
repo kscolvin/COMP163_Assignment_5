@@ -86,66 +86,38 @@ for row in range(1, 11):                            # Loop through numbers 1 to 
 
 
 # Part A
+numbers = []
+total = 0
+count = 0
+min_val = None
+max_val = None
 
-numbers = []                                       # List to store user-entered numbers
-total_sum = 0                                      # Variable to keep track of the sum of numbers
-count = 0                                          # Variable to count how many numbers have been entered
-minimum = None                                     # Variable to track the minimum value entered
-maximum = None                                     # Variable to track the maximum value entered
-
-print("=== Statistics Dashboard ===")
-print("Enter number. Type '-1' to finish.")
-
-while True:                                         # Loop to continuously accept user input until 'done' is entered
-    try:
-        val = int(input("Enter a number: "))
-    except ValueError:
-        print("Please enter a valid integer.")
-        continue
-
-    if val == -1:
+while True:
+    num = int(input("Enter a number: "))
+    if num == -1:
         break
+    
+    numbers.append(num)
+    total += num
+    count += 1
+    
+    if min_val is None or num < min_val:
+        min_val = num
+    if max_val is None or num > max_val:
+        max_val = num
 
-    if val < 0:
-        print("Please enter a non-negative integer.")
-        continue
-
-numbers.append(val)                                 # Add valid input to the list
-
-total_sum += val                                    # Update the total sum with the new value
-count += 1                                          # Increment the count of numbers entered
-
-if minimum is None or val < minimum:                # Update minimum if the current value is smaller
-    minimum = val
-if maximum is None or val > maximum:                # Update maximum if the current value is larger
-    maximum = val
+average = total / count if count > 0 else 0
 
 
 # Part B
 print("\n=== Statistics ===")
-
-# --- Part B: Statistics Display (Using built-in functions) ---
-print("\n=== Statistics ===")
-
-if len(numbers) > 0:
-    
-    count = len(numbers)
-    _sum = sum(numbers)
-    average = _sum / count if count > 0 else 0
-    _min = min(numbers)
-    _max = max(numbers)
-
-
-    stats_data = [
-        ("Count", count),
-        ("Sum", _sum),
-        ("Average", f"{average:.1f}"), 
-        ("Minimum", _min),
-        ("Maximum", _max)
-    ]
-
-    for label, value in stats_data:
-        print(f"{label}: {value}")
+if count > 0:                                       # Check if any numbers were entered to avoid division by zero
+    average = total / count                     # Calculate the average
+    print(f"Count: {count}")
+    print(f"Sum: {total}")
+    print(f"Average: {average:.1f}")                # Format average to one decimal place
+    print(f"Minimum: {min_val}")
+    print(f"Maximum: {max_val}")
 else:
     print("No data was entered.")
 
