@@ -124,32 +124,32 @@ if maximum is None or val > maximum:                # Update maximum if the curr
 # Part B
 print("\n=== Statistics ===")
 
-if len(numbers) > 0:
-    count = len(numbers)
-    _sum = sum(numbers)
-    average = _sum / len(numbers) if len(numbers) > 0 else 0
-    _min = min(numbers)
-    _max = max(numbers)
+if count > 0:
+    average = total_sum / count                       # Calculate the average using the total sum and count of numbers
 
     stats = [
             f"Count: {count}", 
             f"Sum: {total_sum}", 
             f"Average: {average:.1f}", 
-            f"Minimum: {_min}", 
-            f"Maximum: {_max}"
+            f"Minimum: {minimum}", 
+            f"Maximum: {maximum}"
     ]
 
-    for stat in stats:                              # Loop through the list of statistics and print each one
+    for stat in stats:
         print(stat)
 
 
 # Part C
-print("=== Bar Chart ===")
+print("\n=== Bar Chart ===")
+
 for num in numbers:
     print(f"{num}: {'*' * num}")
+    
     for _ in range(num):                            # Inner loop to print * corresponding to the value of num
         print("*", end="")
-    print()                                      
+
+    print()      
+                                      
 else:
     print("No numbers were entered.")
 
