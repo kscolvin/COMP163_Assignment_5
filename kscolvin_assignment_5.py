@@ -84,6 +84,8 @@ for row in range(1, 11):                            # Loop through numbers 1 to 
 # ========================================
 # Step 4: Integration Challenge - Statistics Dashboard
 
+
+# Part A
 numbers = []                                        # Initialize an empty list to store user-entered numbers
 total_sum = 0
 count = 0
@@ -110,10 +112,35 @@ numbers.append(val)                                 # Add valid input to the lis
 total_sum += val                                    # Update the total sum with the new value
 count += 1                                          # Increment the count of numbers entered
 
-if minimum is None or val < minimum:                    # Update minimum if the current value is smaller
+if minimum is None or val < minimum:                # Update minimum if the current value is smaller
     minimum = val
-if maximum is None or val > maximum:                    # Update maximum if the current value is larger
+if maximum is None or val > maximum:                # Update maximum if the current value is larger
     maximum = val
+
+
+# Part B
+print("\n=== Statistics ===")
+
+if count > 0:
+    average = total_sum / count
+
+    stats = [f"Count: {count}", f"Sum: {total_sum}", f"Average: {average:.1f}", f"Minimum: {minimum}", f"Maximum: {maximum}"]
+
+    for stat in stats:                              # Loop through the list of statistics and print each one
+        print(stat)
+
+
+# Part C
+print("\n=== Bar Chart ===")
+
+for num in numbers:
+    print(f"{num:2}: ", end="")
+
+    for _ in range(num):                            # Inner loop to print * corresponding to the value of num
+        print("*", end="")
+    print()                                      
+else:
+    print("No numbers were entered.")
 
 # ========================================
 
