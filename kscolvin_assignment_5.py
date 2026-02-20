@@ -101,9 +101,9 @@ while True:
     total += num
     count += 1
     
-    if min_val is None or num < min_val:
+    if min_val is None or num < min_val:            # Update minimum value if it's the first number or if the current number is smaller than the current minimum
         min_val = num
-    if max_val is None or num > max_val:
+    if max_val is None or num > max_val:            # Update maximum value if it's the first number or if the current number is larger than the current maximum
         max_val = num
 
 average = total / count if count > 0 else 0
